@@ -1,0 +1,21 @@
+﻿@model List<EF_DBFirst.Models.Brand>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/views/Shared/_Layout.cshtml";
+}
+
+<h2>Brand List</h2>
+<table class="table">
+    <tr>
+        <th>Brand Id</th>
+        <th>Brand Name</th>
+    </tr>
+    @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@item.id</td>
+                    <td>@item.name</td>
+                </tr>
+            }
+</table>
+

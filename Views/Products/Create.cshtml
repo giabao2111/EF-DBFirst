@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create Product</h2>
+<form action="/products/create" method="post" >
+    <div class="row">
+        <div class="col-md-6">
+            <label for="ProductName">Product Name</label>
+            <input type="text" class="form-control"
+                   id="ProductName" name="name" placeholder="Product Name" />
+        </div>
+        <div class="col-md-6">
+            <label for="Price">Product Name</label>
+            <input type="text" class="form-control"
+                   id="Price" name="price" placeholder="Price" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="category_id">Category</label>
+            <select id="category_id" name="category_id" class="form-control">
+                <option value="">-- Select Category --</option>
+                @foreach (var category in ViewBag.CategoryList)
+                {
+                    <option value="@category.id">@category.name</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="brand_id">Brand</label>
+            <select id="brand_id" name="brand_id" class="form-control">
+                <option value="">-- Select Brand --</option>
+                @foreach (var brand in ViewBag.BrandLists)
+                {
+                    <option value="@brand.id">@brand.name</option>
+                }
+            </select>
+        </div>
+
+    </div>
+    <button type="submit" class="btn btn-success">Create</button>
+    <a href="/products" class="btn btn-danger">Cancel</a>
+</form>
+

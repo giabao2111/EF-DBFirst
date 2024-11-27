@@ -1,0 +1,58 @@
+﻿@model EF_DBFirst.Models.Product
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+<form action="/products/edit" method="post">
+    <input type="hidden" name="Id" value="@Model.id" />
+    <div class="row">
+        <div class="col-md-6">
+            <label for="ProductName">Product Name</label>
+            <input type="text" class="form-control"
+                   id="ProductName" name="name" placeholder="Product Name" value="@Model.name" />
+        </div>
+        <div class="col-md-6">
+            <label for="Price">Product Name</label>
+            <input type="text" class="form-control"
+                   id="Price" name="price" placeholder="Price" value="@Model.price" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="category_id">Category</label>
+
+            <select id="category_id" name="category_id" class="form-control">
+                <option value="">-- Select Category --</option>
+                @foreach (var category in ViewBag.CategoryList1)
+                {
+                    <option value="@category.id"
+                            @(category.id == ViewBag.SelectedCategoryId ? "selected" : "")>
+                        @category.name
+                    </option>
+                }
+            </select>
+        </div>
+         <div class="col-md-6">
+     <label for="brand_id">Brand</label>
+
+     <select id="brand_id" name="brand_id" class="form-control">
+         <option value="">-- Select Brand --</option>
+         @foreach (var brand in ViewBag.BrandLists1)
+         {
+             <option value="@brand.id" @(brand.id==ViewBag.SelectedBrandId?"selected":"")>@brand.name</option>
+         }
+     </select>
+
+
+ </div>
+    </div>
+
+   
+
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="/products" class="btn btn-danger">Cancel</a>
+</form>
